@@ -8,8 +8,7 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
-      AND RELEASED UNDER THE CREATIVE COMMONS.
+      This is a site about me, my work, and my travels.
     title: Hi, my name is Lejla Kajevic! I am a 24-year old MAM student at LBS.
   blog: {}
   contact:
@@ -40,14 +39,14 @@ params:
     quicklinks:
       - alt: HTML5 UP
         text: 'Design: '
-        url: ####
+        url: https://www.html5up.net
     social:
       - icon: fa-twitter
         label: Twitter
-        url: '#'
+        url: https://www.instagram.com/lejlaakajevic/
       - icon: fa-facebook
         label: Facebook
-        url: '#'
+        url: https://www.instagram.com/lejlaakajevic/
       - icon: fa-instagram
         label: Instagram
         url: https://www.instagram.com/lejlaakajevic/
@@ -71,13 +70,13 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
-      - name: "#"
-        url: '#'
-      - name: '#'
-        url: '#''
+      ####
+      ###
+      #
+      ###
     menu: Menu
     subtitle: By HTML5 Up
-    title: Forty
+    title: Personal Web
   tiles:
     enable: yes
     showcase:
@@ -114,5 +113,5 @@ params:
       pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
       Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
       amet pharetra et feugiat tempus."
-    title: massa libero
+    title: Massa libero
     url: blogs
