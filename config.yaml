@@ -1,7 +1,7 @@
 baseURL: https://lejlasportfolio.netlify.app/
 languageCode: en-us
 title: Portfolio website for Lejla Kajevic
-theme: forty
+theme: Personal Web
 googleAnalytics: ''
 disqusShortname: ''
 params:
@@ -10,22 +10,22 @@ params:
     subtitle: |-
       A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
       AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Lejla Kajevic.
+    title: Hi, my name is Lejla Kajevic! I am a 24-year old MAM student at LBS.
   blog: {}
   contact:
     address:
       - city: London NW1 4SN
         country: England
         street: 45 Hanover Gate Mansions
-        title: Address
+        title: Address 
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: lejla.kajevic@gmail.com
+      - email: lkajevic.mam2023@london.edu
         title: Email
     enable: yes
     phone:
-      - phone: (000) 000-0000 x1234
+      - phone: (079) 34 519 414 
         title: Phone
   custom_css: []
   custom_js: []
@@ -35,7 +35,7 @@ params:
     text: Please visit [this page](/)
   favicon: favicon.ico
   footer:
-    copyright: Company Name
+    copyright: Lejla Kajevic 2022
     enable: yes
     quicklinks:
       - alt: HTML5 UP
@@ -44,37 +44,37 @@ params:
     social:
       - icon: fa-twitter
         label: Twitter
-        url: https://www.twitter.com
+        url: '#'
       - icon: fa-facebook
         label: Facebook
-        url: https://www.facebook.com
+        url: '#'
       - icon: fa-instagram
         label: Instagram
-        url: https://www.instagram.com
+        url: https://www.instagram.com/lejlaakajevic/
       - icon: fa-github
         label: GitHub
-        url: https://www.github.com
+        url: https://github.com/lejla24
       - icon: fa-linkedin
         label: LinkedIn
-        url: https://www.linkedin.com
+        url: https://www.linkedin.com/in/lejla-kajevic/
   image: ''
-  name: Your name
+  name: Lejla Kajevic
   navigation:
     button1:
-      - name: Get Started
+      - name: About Me
         url: blogs
     button2:
-      - name: Log In
+      - name: '#'
         url: '#'
     links:
       - name: Home
         url: '#'
       - name: Blogs
         url: blogs
-      - name: Generic Blog
-        url: blogs/ipsum
-      - name: Elements
-        url: elements.html
+      - name: "#"
+        url: '#'
+      - name: '#'
+        url: '#''
     menu: Menu
     subtitle: By HTML5 Up
     title: Forty
@@ -84,7 +84,7 @@ params:
       - image: pic01.jpg
         subtitle: Ipsum Dolor Sit Amet
         title: Aliquam
-        url: blogs/aliquam
+        url: blogs/risk_return
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
         title: Tempus
@@ -106,7 +106,7 @@ params:
         title: Etiam
         url: blogs/ipsum
   two:
-    buttonText: Get Started
+    buttonText: About Me
     enable: yes
     subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
       \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
@@ -114,5 +114,5 @@ params:
       pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
       Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
       amet pharetra et feugiat tempus."
-    title: Massa libero
+    title: massa libero
     url: blogs
