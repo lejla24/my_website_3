@@ -1,15 +1,15 @@
 baseURL: https://lejlasportfolio.netlify.app/
 languageCode: en-us
 title: Portfolio website for Lejla Kajevic
-theme: Personal Web
+theme: forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
-    buttonText: Get Started
+    buttonText: Data Analytics Portfolio
     subtitle: |-
-      This is a site about me, my work, and my travels.
-    title: Hi, my name is Lejla Kajevic! I am a 24-year old MAM student at LBS.
+      This is a site about me, my professional experience, and my data analytics work.
+    title: Welcome to my website! My name is Lejla Kajevic. 
   blog: {}
   contact:
     address:
@@ -24,7 +24,7 @@ params:
         title: Email
     enable: yes
     phone:
-      - phone: (079) 34 519 414 
+      - phone: +44 7934 519 414 
         title: Phone
   custom_css: []
   custom_js: []
@@ -41,12 +41,12 @@ params:
         text: 'Design: '
         url: https://www.html5up.net
     social:
-      - icon: fa-twitter
-        label: Twitter
-        url: https://www.instagram.com/lejlaakajevic/
-      - icon: fa-facebook
-        label: Facebook
-        url: https://www.instagram.com/lejlaakajevic/
+      #
+      #
+      #
+      ## - icon: fa-facebook
+      ## label: Facebook
+      ###
       - icon: fa-instagram
         label: Instagram
         url: https://www.instagram.com/lejlaakajevic/
@@ -59,59 +59,56 @@ params:
   image: ''
   name: Lejla Kajevic
   navigation:
-    button1:
-      - name: About Me
-        url: blogs
-    button2:
-      - name: '#'
-        url: '#'
+    ###
+    ###
+    ###
+    #
+    #
+    #
     links:
       - name: Home
         url: '#'
-      - name: Blogs
+      - name: About Me 
         url: blogs
       ####
       ###
       #
       ###
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Personal Web
+    subtitle: 
+    title: 
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
+      - image: lbs.jpeg
+        subtitle: AUT22 Exercise
+        title: Risk Return Analysis
         url: blogs/risk_return
       - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Tempus
+        subtitle: Hawaii
+        title: Hawaii
         url: blogs/tempus
       - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
+        subtitle: Jordan
+        title: Jordan
         url: blogs/magna
       - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
+        subtitle: Vancouver Island
+        title: Vancouver Island
         url: blogs/ipsum
       - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
+        subtitle: The Rocky Mountains
+        title: The Rocky Mountains
         url: blogs/ipsum
       - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
+        subtitle: New York
+        title: New York
         url: blogs/ipsum
   two:
-    buttonText: About Me
+    buttonText: Read More
     enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
+    subtitle: "I am a 24 year old Canadian-Bosnian, currently studying in the MAM program at London Business School.
+      \n  I have over 3 years of experience in public-sector investments and fiscal policy within the Government of Canada and NGO sector. In my spare time, I try to travel as much as I can! \n"
+    title: About Me
     url: blogs
+    
