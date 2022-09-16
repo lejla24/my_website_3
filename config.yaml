@@ -86,10 +86,10 @@ params:
         subtitle: AUT22 Exercise
         title: Risk Return Analysis
         url: blogs/risk_return
-      - image: pic02.jpg
-        subtitle: Hawaii
-        title: Hawaii
-        url: blogs/tempus
+      - image: lbs.jpeg
+        subtitle: Exercise
+        title: IMDB Differences between directors
+        url: blogs/idmb_ratings
       - image: pic03.jpg
         subtitle: Jordan
         title: Jordan

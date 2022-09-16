@@ -7,8 +7,6 @@ description: ""
 draft: false
 image: lbs.jpeg
 keywords: ""
-slug: resume
-title: Resume
+slug: travel
+title: Travel
 ---
-
-Read about my past work experience here.

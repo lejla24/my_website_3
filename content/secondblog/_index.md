@@ -6,4 +6,4 @@ slug: secondblog
 title: About Me
 ---
 
-My professional experience and personal life.
+My professional experience and travels.
