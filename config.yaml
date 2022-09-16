@@ -9,7 +9,7 @@ params:
     buttonText: Data Analytics Portfolio
     subtitle: |-
       This is a site about me, my professional experience, and my data analytics work.
-    title: Welcome to my website! My name is Lejla Kajevic. 
+    title: Hello! My name is Lejla Kajevic. Welcome to my website! 
   blog: {}
   contact:
     address:
@@ -69,6 +69,8 @@ params:
       - name: Home
         url: '#'
       - name: About Me 
+        url: secondblog
+      - name: Data Analytics Portfolio
         url: blogs
       ####
       ###
@@ -110,5 +112,4 @@ params:
     subtitle: "I am a 24 year old Canadian-Bosnian, currently studying in the MAM program at London Business School.
       \n  I have over 3 years of experience in public-sector investments and fiscal policy within the Government of Canada and NGO sector. In my spare time, I try to travel as much as I can! \n"
     title: About Me
-    url: blogs
-    
+    url: secondblog

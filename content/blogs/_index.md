@@ -1,9 +1,9 @@
 ---
 date: "2017-10-31T22:27:21-05:00"
 draft: false
-image: pic02.jpg
+image: lbs.jpeg
 slug: blogs
-title: Lifestyle
+title: Data Analytics
 ---
 
-My blogs about technology and lifestyle.
+My Data Analytics work, as part of the AUT22 MAM course.
