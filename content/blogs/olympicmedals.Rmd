@@ -1,0 +1,130 @@
+---
+categories:  
+- ""  
+- ""
+date: "2021-09-30"
+description: Olympic Medals
+image: olympicmedals.jpeg
+
+keywords: ""
+slug: olympicmedals
+title: Olympic Meals
+---
+
+```{r packages, include = FALSE}
+library(tidyverse)
+library(wbstats)
+library(janitor)
+library(rvest)
+library(countrycode)
+library(GGally)
+library(ggrepel)
+library(patchwork)
+```
+
+```{r name, include = FALSE}
+# get World bank data using wbstats
+indicators <- c("SP.POP.TOTL",
+                "NY.GDP.PCAP.KD",
+                "NY.GDP.MKTP.CD"
+) 
+
+
+worldbank_data <- wb_data(country="countries_only", #countries only- no aggregates like Latin America, Europe, etc.
+                          indicator = indicators, 
+                          start_date = 2019, 
+                          end_date = 2019)%>% 
+  clean_names()
+
+
+# get a dataframe of information regarding countries, indicators, sources, regions, indicator topics, lending types, income levels,  from the World Bank API 
+countries <-  wbstats::wb_cachelist$countries
+
+# URL: to get 2016 Olympics medals
+url <- "https://en.wikipedia.org/wiki/2020_Summer_Olympics_medal_table"
+
+
+# get tables that exist on wikipedia page 
+tables <- url %>% 
+  read_html() %>% 
+  html_nodes(css="table")
+
+
+# parse HTML tables into a dataframe called medals 
+# Use purr::map() to create a list of all tables in URL
+medals <- map(tables, . %>% 
+               html_table(fill=TRUE)%>% 
+               janitor::clean_names())
+```
+
+# List of medals
+```{r, medals}
+olympics_2020_medals <- medals[[3]] %>% 
+    slice(1:(n()-1))
+olympics_2020_medals
+```
+
+```{r, include = FALSE}
+# Step 1 - prepare olympic medals table
+
+medals_iso3 <-  olympics_2020_medals %>% 
+  select(noc) %>% 
+  pull() %>% 
+  countrycode(
+    origin = "country.name",
+    destination = 'iso3c') %>% 
+  as_tibble()
+
+medals_iso <- bind_cols(olympics_2020_medals, medals_iso3)
+
+# Step 2 - left_join  world bank data table with table 'country' that contains 
+# country characteristics ISO3 
+
+worldbank_data <- left_join(worldbank_data, countries, by = "iso3c")
+
+# Step 3 - left_join  olympic medals table with ISO3 code with world bank data
+
+my_data <- left_join(medals_iso,
+                     worldbank_data,
+                     by = c("value" = "iso3c")) %>% 
+  rename(
+    gdp_current_usd = ny_gdp_mktp_cd,
+    gdp_per_cap_2010 = ny_gdp_pcap_kd,
+    population = sp_pop_totl
+  )
+
+my_data %>% 
+  select(total, gdp_current_usd, gdp_per_cap_2010, population) %>% 
+  ggpairs()
+```
+
+# Medals vs GDP_current USD by income level
+
+```{r medals1, message = FALSE, warning = FALSE}
+ggplot(my_data, aes(x=gdp_current_usd, y = total))+
+  geom_point()+
+  geom_smooth(se=F, method="lm")+
+  geom_text_repel(aes(label = value))+
+  theme_bw()
+```
+
+# Medals vs population by income_level
+
+```{r medals2, message = FALSE, warning = FALSE}
+ggplot(my_data, aes(x=population, y = total, colour = income_level))+
+  geom_point()+
+  geom_smooth(se=F, method="lm")+
+  geom_text_repel(aes(label = value))+
+  theme_bw()
+```
+
+# Medals vs GDP per capita by income_level
+
+```{r medals3, message = FALSE, warning = FALSE}
+ggplot(my_data, aes(x=gdp_per_cap_2010, y = total, colour=income_level))+
+  geom_point()+
+  geom_smooth(se=F, method="lm")+
+  geom_text_repel(aes(label = value))+
+  theme_bw()+
+  scale_x_continuous(labels = scales::dollar_format(suffix = "K",scale = 1e-3))
+```

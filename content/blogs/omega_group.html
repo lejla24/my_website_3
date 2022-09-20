@@ -1,0 +1,63 @@
+---
+categories:  
+- ""  
+- ""
+date: "2021-09-30"
+description: Omega group pay
+image: omega.jpg
+keywords: ""
+slug: omega
+title: Omega Group Pay
+---
+
+
+
+<p>At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted.</p>
+<p>We will determine whether there is indeed a significant difference between the salaries of men and women, and whether the difference is due to discrimination or whether it is based on another, possibly valid, determining factor.</p>
+<div id="summary-statistics" class="section level1">
+<h1>Summary Statistics</h1>
+<p>First, let’s calculate summary statistics on salary by gender. Then, we will also create and print a dataframe where, for each gender, we show the mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% confidence interval.</p>
+<pre class="r"><code>omega_2&lt;-mosaic::favstats (salary ~ gender, data=omega)
+omega_2</code></pre>
+<pre><code>##   gender   min    Q1 median    Q3   max  mean   sd  n missing
+## 1 female 47033 60338  64618 70033 78800 64543 7567 26       0
+## 2   male 54768 68331  74675 78568 84576 73239 7463 24       0</code></pre>
+<p>The 95% confidence intervals of the two genders overlap largely, meaning that there is now a need to run t-tests to determine whether these two means are different.</p>
+</div>
+<div id="hypothesis-testing" class="section level1">
+<h1>Hypothesis testing</h1>
+<pre class="r"><code>t.test(salary~gender, data = omega) </code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  salary by gender
+## t = -4, df = 48, p-value = 2e-04
+## alternative hypothesis: true difference in means between group female and group male is not equal to 0
+## 95 percent confidence interval:
+##  -12973  -4420
+## sample estimates:
+## mean in group female   mean in group male 
+##                64543                73239</code></pre>
+<pre class="r"><code>mean_dif &lt;- omega %&gt;% specify(salary~gender) %&gt;% calculate(stat = &quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;))
+
+set.seed(1234)
+ratings_in_null_world &lt;- omega %&gt;%
+  specify(salary~gender) %&gt;% 
+  hypothesize(null = &quot;independence&quot;) %&gt;%
+  generate(reps=1000, type=&quot;permute&quot;) %&gt;%
+  calculate(stat=&quot;diff in means&quot;, order = c(&quot;male&quot;,&quot;female&quot;)) 
+
+ratings_in_null_world %&gt;% visualize() +
+  shade_p_value(obs_stat = mean_dif , direction = &quot;two-sided&quot;)</code></pre>
+<p><img src="/blogs/omega_group_files/figure-html/hypothesis_testing-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p_value &lt;- ratings_in_null_world%&gt;%
+  get_p_value(obs_stat = mean_dif, direction = &quot;two-sided&quot;)
+p_value</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   p_value
+##     &lt;dbl&gt;
+## 1       0</code></pre>
+<p>From running this simulation, we see that the p-value is close to 0 (2e-04). This indicates that we should reject the null hypothesis and the difference in gender salary is indeed statistically different.</p>
+<p>We can also get the same conclusion from looking at the t-statistic. In this case, the absolute value of t-statistic is higher than 2, thus we reject the null hypothesis.</p>
+<p>The third way to confirm our conclusion is to look at the confidence interval. In this case, the CI does not contain zero, thus we reject the null hypothesis.</p>
+</div>

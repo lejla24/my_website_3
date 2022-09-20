@@ -1,9 +1,9 @@
 ---
 date: "2017-10-31T22:27:21-05:00"
 draft: false
-image: lbs.jpeg
+image: coding.jpeg
 slug: blogs
 title: Data Analytics
 ---
 
-My Data Analytics work, as part of the AUT22 MAM course.
+Some samples of my data analytics work, as part of the AM01 - Applied Statistics MAM course.

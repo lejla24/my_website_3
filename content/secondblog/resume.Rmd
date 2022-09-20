@@ -1,0 +1,18 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: ""
+draft: false
+image: business.jpeg
+keywords: ""
+slug: Resume
+title: Resume
+---
+
+See below for my resume, which describes my professional, academic, and extracurricular activities in detail.
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/resume.jpg",error=FALSE)
+```

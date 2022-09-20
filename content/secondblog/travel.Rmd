@@ -1,0 +1,71 @@
+---
+categories:
+- ''
+- ''
+date: "2017-10-31T21:28:43-05:00"
+description: ''
+draft: no
+image: planewing.jpg
+keywords: ''
+slug: travel
+title: "Hiking Trips"
+---
+
+While I spent most of my life living in Vancouver, Canada, which is known for its spectacular natural scenery, it wasn't until the COVID-19 pandemic hit that I truly began to take advantage of this. Soon, I began embarking on several hiking and backpacking trips, both in the Vancouver area and outside of it.
+
+This page is a compilation of a few of my favorite photos that I have taken on different hikes over the last two years. 
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/bowvalley.jpg",error=FALSE)
+```
+_Sunrise above Bow Valley Provincial Park, Canada (2020)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/kananaskis.jpg",error=FALSE)
+```
+_Trek through scrabble en route to Mount Smutwood, Canada (2020)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/nanajordan.jpg",error=FALSE)
+```
+_My grandmother at the peak of Petra, Jordan (2020)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/cypress.jpg",error=FALSE)
+```
+_Sunset from the peak of Mount Cypress, Canada (2021)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/juan.jpg",error=FALSE)
+```
+_China Beach, Juan de Fuca Trail, Canada (2021)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/diamondhead.jpg",error=FALSE)
+```
+_Top of Diamond Head State Park, Hawaii, USA (2021)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/kuliouou.jpg",error=FALSE)
+```
+_A view of the Kuliouou Valley from Twin Peaks, Hawaii, USA (2021)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/whistler.jpg",error=FALSE)
+```
+_View from snowshoeing at the peak of Whistler Mountain, Canada (2022)_
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/secondblog/lukomir.jpg",error=FALSE)
+```
+_Old house on the mountainside, Lukomir, Bosnia (2022)_
+

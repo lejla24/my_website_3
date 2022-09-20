@@ -1,0 +1,63 @@
+---
+categories:  
+- ""  
+- ""
+date: "2021-09-30"
+description: Olympic Medals
+image: olympicmedals.jpeg
+
+keywords: ""
+slug: olympicmedals
+title: Olympic Meals
+---
+
+
+
+<div id="list-of-medals" class="section level1">
+<h1>List of medals</h1>
+<pre class="r"><code>olympics_2020_medals &lt;- medals[[3]] %&gt;% 
+    slice(1:(n()-1))
+olympics_2020_medals</code></pre>
+<pre><code>## # A tibble: 93 × 6
+##    rank  noc            gold silver bronze total
+##    &lt;chr&gt; &lt;chr&gt;         &lt;int&gt;  &lt;int&gt;  &lt;int&gt; &lt;int&gt;
+##  1 1     United States    39     41     33   113
+##  2 2     China            38     32     19    89
+##  3 3     Japan*           27     14     17    58
+##  4 4     Great Britain    22     20     22    64
+##  5 5     ROC              20     28     23    71
+##  6 6     Australia        17      7     22    46
+##  7 7     Netherlands      10     12     14    36
+##  8 8     France           10     12     11    33
+##  9 9     Germany          10     11     16    37
+## 10 10    Italy            10     10     20    40
+## # … with 83 more rows</code></pre>
+</div>
+<div id="medals-vs-gdp_current-usd-by-income-level" class="section level1">
+<h1>Medals vs GDP_current USD by income level</h1>
+<pre class="r"><code>ggplot(my_data, aes(x=gdp_current_usd, y = total))+
+  geom_point()+
+  geom_smooth(se=F, method=&quot;lm&quot;)+
+  geom_text_repel(aes(label = value))+
+  theme_bw()</code></pre>
+<p><img src="/blogs/olympicmedals_files/figure-html/medals1-1.png" width="672" /></p>
+</div>
+<div id="medals-vs-population-by-income_level" class="section level1">
+<h1>Medals vs population by income_level</h1>
+<pre class="r"><code>ggplot(my_data, aes(x=population, y = total, colour = income_level))+
+  geom_point()+
+  geom_smooth(se=F, method=&quot;lm&quot;)+
+  geom_text_repel(aes(label = value))+
+  theme_bw()</code></pre>
+<p><img src="/blogs/olympicmedals_files/figure-html/medals2-1.png" width="672" /></p>
+</div>
+<div id="medals-vs-gdp-per-capita-by-income_level" class="section level1">
+<h1>Medals vs GDP per capita by income_level</h1>
+<pre class="r"><code>ggplot(my_data, aes(x=gdp_per_cap_2010, y = total, colour=income_level))+
+  geom_point()+
+  geom_smooth(se=F, method=&quot;lm&quot;)+
+  geom_text_repel(aes(label = value))+
+  theme_bw()+
+  scale_x_continuous(labels = scales::dollar_format(suffix = &quot;K&quot;,scale = 1e-3))</code></pre>
+<p><img src="/blogs/olympicmedals_files/figure-html/medals3-1.png" width="672" /></p>
+</div>

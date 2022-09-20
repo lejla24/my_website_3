@@ -1,0 +1,107 @@
+---
+categories:  
+- ""  
+- ""
+date: "2021-09-30"
+description: Omega group pay
+image: omega.jpg
+keywords: ""
+slug: omega
+title: Omega Group Pay
+---
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+```
+
+
+At the last board meeting of Omega Group Plc., the headquarters of a large multinational company, the issue was raised that women were being discriminated in the company, in the sense that the salaries were not the same for male and female executives. A quick analysis of a sample of 50 employees (of which 24 men and 26 women) revealed that the average salary for men was about 8,700 higher than for women. This seemed like a considerable difference, so it was decided that a further analysis of the company salaries was warranted. 
+
+We will determine whether there is indeed a significant difference between the salaries of men and women, and whether the difference is due to discrimination or whether it is based on another, possibly valid, determining factor. 
+
+```{r load_omega_data, include = FALSE}
+omega <- read_csv(here::here("data", "omega.csv"))
+glimpse(omega)
+```
+
+# Summary Statistics
+
+First, let's calculate summary statistics on salary by gender. Then, we will also create and print a dataframe where, for each gender, we show the mean, SD, sample size, the t-critical, the SE, the margin of error, and the low/high endpoints of a 95% confidence interval.
+
+```{r, confint_single_valiables}
+omega_2<-mosaic::favstats (salary ~ gender, data=omega)
+omega_2
+```
+
+```{r, include = FALSE}
+male_female_df <- omega_2 %>%
+  select(mean, sd,n, gender) %>%
+  mutate(se=sd/sqrt(n),
+  t = qt(0.975,n-1),
+  margin =t*se,
+  l_ci =mean - margin,
+  h_ci = mean +margin) %>%
+  select(gender, mean, sd, n, t, se, margin, l_ci, h_ci)
+
+male_female_df
+```
+
+The 95% confidence intervals of the two genders overlap largely, meaning that there is now a need to run t-tests to determine whether these two means are different.
+
+# Hypothesis testing
+
+```{r, hypothesis_testing, fig.height=5, fig.width=8, message = FALSE}
+t.test(salary~gender, data = omega) 
+
+mean_dif <- omega %>% specify(salary~gender) %>% calculate(stat = "diff in means", order = c("male","female"))
+
+set.seed(1234)
+ratings_in_null_world <- omega %>%
+  specify(salary~gender) %>% 
+  hypothesize(null = "independence") %>%
+  generate(reps=1000, type="permute") %>%
+  calculate(stat="diff in means", order = c("male","female")) 
+
+ratings_in_null_world %>% visualize() +
+  shade_p_value(obs_stat = mean_dif , direction = "two-sided")
+
+p_value <- ratings_in_null_world%>%
+  get_p_value(obs_stat = mean_dif, direction = "two-sided")
+p_value
+
+```
+
+From running this simulation, we see that the p-value is close to 0 (2e-04). This indicates that we should reject the null hypothesis and the difference in gender salary is indeed statistically different.
+
+We can also get the same conclusion from looking at the t-statistic. In this case, the absolute value of t-statistic is higher than 2, thus we reject the null hypothesis.
+
+The third way to confirm our conclusion is to look at the confidence interval. In this case, the CI does not contain zero, thus we reject the null hypothesis.
+

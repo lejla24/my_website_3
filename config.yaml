@@ -83,29 +83,29 @@ params:
     enable: yes
     showcase:
       - image: lbs.jpeg
-        subtitle: AUT22 Exercise
+        subtitle: Analysis of Financial Stocks Return
         title: Risk Return Analysis
         url: blogs/risk_return
-      - image: lbs.jpeg
-        subtitle: Exercise
-        title: IMDB Differences between directors
-        url: blogs/idmb_ratings
+      - image: olympicmedals.jpeg
+        subtitle: Comparison of Number of Medals
+        title: Olympic Medals
+        url: blogs/olympicmedals
       - image: pic03.jpg
-        subtitle: Jordan
-        title: Jordan
-        url: blogs/magna
-      - image: pic04.jpg
-        subtitle: Vancouver Island
-        title: Vancouver Island
-        url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: The Rocky Mountains
-        title: The Rocky Mountains
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: New York
-        title: New York
-        url: blogs/ipsum
+        subtitle: Comparisons across 3 countries
+        title: GDP Comparisons
+        url: blogs/gdp_comparisons
+      - image: omega.jpg
+        subtitle: Discrepancies in Pay
+        title: Omega Group Pay
+        url: blogs/omega
+      - image: prius.jpeg
+        subtitle: Linear Regressions
+        title: Used Toyota Prius Prices
+        url: blogs/prius_prices
+      - image: londonbikes.jpeg
+        subtitle: Linear Regressions
+        title: London Bikes 
+        url: blogs/london_bikes 
   two:
     buttonText: Read More
     enable: yes

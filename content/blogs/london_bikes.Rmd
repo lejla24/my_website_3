@@ -1,0 +1,111 @@
+---
+categories:  
+- ""  
+- ""
+date: "2021-09-30"
+description: London Bikes
+image: londonbikes.jpeg
+keywords: ""
+slug: london_bikes
+title: London Bikes
+---
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(GGally)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(huxtable)
+library(lubridate)
+library(car)
+library(performance)
+library(ggfortify)
+```
+
+In this exercise we explore the relationship between bikes hired and a bunch of explanatory variables.
+
+```{r load-bikes-data, include = FALSE}
+bike <- read_csv(here::here("data", "london_bikes.csv"))
+```
+
+```{r bikes, include= FALSE}
+bike <- bike %>%   
+  mutate(
+    year=year(date),
+    month = month(date),
+    month_name=month(date, label = TRUE),
+    day_of_week = wday(date, label = TRUE)) 
+
+bike <- bike %>%  
+  mutate(
+    season_name = case_when(
+      month_name %in%  c("Dec", "Jan", "Feb")  ~ "Winter",
+      month_name %in%  c("Mar", "Apr", "May")  ~ "Spring",
+      month_name %in%  c("Jun", "Jul", "Aug")  ~ "Summer",
+      month_name %in%  c("Sep", "Oct", "Nov")  ~ "Autumn",
+    ),
+    season_name = factor(season_name, 
+                         levels = c("Winter", "Spring", "Summer", "Autumn"))
+  )
+
+skim(bike)
+```
+
+
+# Simple linear regression model for bike
+```{r, warning = FALSE}
+model1 <- lm(bikes_hired ~ 1, data= bike)
+msummary(model1)
+
+bike %>% 
+  select(cloud_cover, humidity, pressure, radiation, precipitation, sunshine, mean_temp, min_temp) %>% 
+  ggpairs()
+```
+
+Now lets look at other, more sophisticated regression models:
+
+# Model 2
+```{r,warning = FALSE}
+model2 <- lm(bikes_hired ~mean_temp + humidity + pressure + radiation  + precipitation + sunshine, data= bike)
+msummary(model2)
+vif(model2)
+```
+
+# Model 3
+```{r,warning = FALSE}
+model3 <- lm(bikes_hired ~ mean_temp + min_temp+ humidity + pressure + radiation  + precipitation + sunshine, data= bike)
+msummary(model3)
+vif(model3)
+```
+
+# Model 4
+```{r,warning = FALSE}
+model4 <- lm(bikes_hired ~ mean_temp + humidity + pressure + radiation  + precipitation + sunshine + season_name+ factor(year), data= bike)
+msummary(model4)
+vif(model4)
+```
+
+# Model 5
+```{r,warning = FALSE}
+model5 <- lm(bikes_hired ~ mean_temp + humidity + pressure + radiation  + precipitation + sunshine + season_name+ factor(year) + day_of_week, data= bike)
+msummary(model5)
+vif(model5)
+```
+
+
+# Summary table comparing the models
+```{r}
+huxreg(model1, model2, model3, model4, model5,
+       statistics = c('#observations' = 'nobs', 
+                      'R squared' = 'r.squared', 
+                      'Adj. R Squared' = 'adj.r.squared', 
+                      'Residual SE' = 'sigma'), 
+       bold_signif = 0.05, 
+       stars = NULL
+) %>% 
+  set_caption('Comparison of models')
+```

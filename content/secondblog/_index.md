@@ -1,9 +1,9 @@
 ---
 date: "2017-10-31T22:27:21-05:00"
 draft: false
-image: lbs.jpeg
+image: IMG_9190.jpeg
 slug: secondblog
 title: About Me
 ---
 
-My professional experience and travels.
+More about me, my professional experiences, and travels.
