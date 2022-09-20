@@ -6,6 +6,7 @@ googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
+    image: banner.jpeg
     buttonText: Data Analytics Portfolio
     subtitle: |-
       This is a site about me, my professional experience, and my data analytics work.
